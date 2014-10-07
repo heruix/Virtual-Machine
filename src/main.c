@@ -5,13 +5,14 @@
 
 int main(int argc, char *argv[]) {
     void *loader = New(BinaryLoader);
-    void *accelerator = New(KVM);
+    void *accelerator = New(KVMAccelerator);
 
     void *vm = New(X86VirtualMachine);
 
     SetProgramLoader(vm, loader);
     SetVirtualAccelerator(vm, accelerator);
 
+    CreateVirtualMachine(vm);
     RunVirtualMachine(vm);
     
     return 0;
