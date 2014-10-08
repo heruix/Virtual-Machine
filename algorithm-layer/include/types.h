@@ -1,20 +1,17 @@
-#ifndef KVMACCELERATOR_H
-#define KVMACCELERATOR_H
+#ifndef TYPES_H
+#define TYPES_H
 
-#include "accelerator.h"
 #include <pthread.h>
 
-struct kvm_userspace_memory_region;
-
 typedef struct {
-    int id:
+    int id;
     int fd;
     pthread_t vcpuThread;
     struct kvm_run *kvmRun;
     int kvmRunMmapSize;
-    struct kvm_regs *regs;
-    struct kvm_regs *sregs;
-    VCPUThread runThread;
+    struct kvm_regs regs;
+    struct kvm_sregs sregs;
+    VCPUThread *runThread;
 } VCPUState;
 
 typedef struct {
@@ -24,17 +21,17 @@ typedef struct {
     __u64 ramSize;
     __u64 ramStart;
     struct kvm_userspace_memory_region *mem;
-    VCPUState *vcpus;
+    VCPUState **vcpus;
     int vcpuNumber;
 } KVMState;
 
 typedef struct {
-    const void *_;
     KVMState *kvm;
-} _KVMAccelerator;
+    int vcpuID;
+} VCPUThreadParameter;
 
 extern const void *KVMAccelerator;
+extern const void *BinaryLoader;
+extern const void *X86VirtualMachine;
 
 #endif
-
-int *a = calloc(5, sizeof(int*));
