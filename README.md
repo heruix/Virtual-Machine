@@ -13,5 +13,5 @@ Virtual-Machine
 ./configure --prefix=... ; make && make install
 
 运行测试用例   
-Virtual-Machine image.bin
+vmm image.bin
 
