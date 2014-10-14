@@ -616,6 +616,14 @@ m4trace:/usr/share/aclocal-1.11/amversion.m4:36: -1- AC_DEFUN([AM_SET_CURRENT_AU
 m4_ifndef([AC_AUTOCONF_VERSION],
   [m4_copy([m4_PACKAGE_VERSION], [AC_AUTOCONF_VERSION])])dnl
 _AM_AUTOCONF_VERSION(m4_defn([AC_AUTOCONF_VERSION]))])
+m4trace:/usr/share/aclocal-1.11/as.m4:13: -1- AC_DEFUN([AM_PROG_AS], [# By default we simply use the C compiler to build assembly code.
+AC_REQUIRE([AC_PROG_CC])
+test "${CCAS+set}" = set || CCAS=$CC
+test "${CCASFLAGS+set}" = set || CCASFLAGS=$CFLAGS
+AC_ARG_VAR([CCAS],      [assembler compiler command (defaults to CC)])
+AC_ARG_VAR([CCASFLAGS], [assembler compiler flags (defaults to CFLAGS)])
+_AM_IF_OPTION([no-dependencies],, [_AM_DEPENDENCIES([CCAS])])dnl
+])
 m4trace:/usr/share/aclocal-1.11/auxdir.m4:49: -1- AC_DEFUN([AM_AUX_DIR_EXPAND], [dnl Rely on autoconf to set up CDPATH properly.
 AC_PREREQ([2.50])dnl
 # expand $ac_aux_dir to an absolute path
@@ -2453,24 +2461,38 @@ m4trace:configure.ac:15: -1- _AM_SUBST_NOTMAKE([am__fastdepCC_TRUE])
 m4trace:configure.ac:15: -1- _AM_SUBST_NOTMAKE([am__fastdepCC_FALSE])
 m4trace:configure.ac:17: -1- AM_PROG_CC_C_O
 m4trace:configure.ac:17: -1- m4_pattern_allow([^NO_MINUS_C_MINUS_O$])
-m4trace:configure.ac:24: -1- m4_pattern_allow([^HAVE_PTHREAD_H$])
-m4trace:configure.ac:38: -1- m4_pattern_allow([^size_t$])
-m4trace:configure.ac:41: -1- AC_DEFUN([_AC_Header_stdlib_h], [m4_divert_text([INIT_PREPARE], [AS_VAR_APPEND([ac_header_list], [" stdlib.h"])])
+m4trace:configure.ac:18: -1- AM_PROG_AS
+m4trace:configure.ac:18: -1- m4_pattern_allow([^CCAS$])
+m4trace:configure.ac:18: -1- m4_pattern_allow([^CCASFLAGS$])
+m4trace:configure.ac:18: -1- _AM_IF_OPTION([no-dependencies], [], [_AM_DEPENDENCIES([CCAS])])
+m4trace:configure.ac:18: -2- _AM_MANGLE_OPTION([no-dependencies])
+m4trace:configure.ac:18: -1- _AM_DEPENDENCIES([CCAS])
+m4trace:configure.ac:18: -1- m4_pattern_allow([^CCASDEPMODE$])
+m4trace:configure.ac:18: -1- AM_CONDITIONAL([am__fastdepCCAS], [
+  test "x$enable_dependency_tracking" != xno \
+  && test "$am_cv_CCAS_dependencies_compiler_type" = gcc3])
+m4trace:configure.ac:18: -1- m4_pattern_allow([^am__fastdepCCAS_TRUE$])
+m4trace:configure.ac:18: -1- m4_pattern_allow([^am__fastdepCCAS_FALSE$])
+m4trace:configure.ac:18: -1- _AM_SUBST_NOTMAKE([am__fastdepCCAS_TRUE])
+m4trace:configure.ac:18: -1- _AM_SUBST_NOTMAKE([am__fastdepCCAS_FALSE])
+m4trace:configure.ac:25: -1- m4_pattern_allow([^HAVE_PTHREAD_H$])
+m4trace:configure.ac:39: -1- m4_pattern_allow([^size_t$])
+m4trace:configure.ac:42: -1- AC_DEFUN([_AC_Header_stdlib_h], [m4_divert_text([INIT_PREPARE], [AS_VAR_APPEND([ac_header_list], [" stdlib.h"])])
 _AC_HEADERS_EXPANSION])
-m4trace:configure.ac:41: -1- AC_DEFUN([_AC_Header_unistd_h], [m4_divert_text([INIT_PREPARE], [AS_VAR_APPEND([ac_header_list], [" unistd.h"])])
+m4trace:configure.ac:42: -1- AC_DEFUN([_AC_Header_unistd_h], [m4_divert_text([INIT_PREPARE], [AS_VAR_APPEND([ac_header_list], [" unistd.h"])])
 _AC_HEADERS_EXPANSION])
-m4trace:configure.ac:41: -1- AC_DEFUN([_AC_Header_sys_param_h], [m4_divert_text([INIT_PREPARE], [AS_VAR_APPEND([ac_header_list], [" sys/param.h"])])
+m4trace:configure.ac:42: -1- AC_DEFUN([_AC_Header_sys_param_h], [m4_divert_text([INIT_PREPARE], [AS_VAR_APPEND([ac_header_list], [" sys/param.h"])])
 _AC_HEADERS_EXPANSION])
-m4trace:configure.ac:41: -1- m4_pattern_allow([^HAVE_GETPAGESIZE$])
-m4trace:configure.ac:41: -1- m4_pattern_allow([^HAVE_MMAP$])
-m4trace:configure.ac:42: -1- m4_pattern_allow([^HAVE_MUNMAP$])
-m4trace:configure.ac:56: -1- m4_pattern_allow([^LIB@&t@OBJS$])
-m4trace:configure.ac:56: -1- m4_pattern_allow([^LTLIBOBJS$])
-m4trace:configure.ac:56: -1- AM_CONDITIONAL([am__EXEEXT], [test -n "$EXEEXT"])
-m4trace:configure.ac:56: -1- m4_pattern_allow([^am__EXEEXT_TRUE$])
-m4trace:configure.ac:56: -1- m4_pattern_allow([^am__EXEEXT_FALSE$])
-m4trace:configure.ac:56: -1- _AM_SUBST_NOTMAKE([am__EXEEXT_TRUE])
-m4trace:configure.ac:56: -1- _AM_SUBST_NOTMAKE([am__EXEEXT_FALSE])
-m4trace:configure.ac:56: -1- _AC_AM_CONFIG_HEADER_HOOK(["$ac_file"])
-m4trace:configure.ac:56: -1- _AM_OUTPUT_DEPENDENCY_COMMANDS
-m4trace:configure.ac:56: -1- _LT_PROG_LTMAIN
+m4trace:configure.ac:42: -1- m4_pattern_allow([^HAVE_GETPAGESIZE$])
+m4trace:configure.ac:42: -1- m4_pattern_allow([^HAVE_MMAP$])
+m4trace:configure.ac:43: -1- m4_pattern_allow([^HAVE_MUNMAP$])
+m4trace:configure.ac:57: -1- m4_pattern_allow([^LIB@&t@OBJS$])
+m4trace:configure.ac:57: -1- m4_pattern_allow([^LTLIBOBJS$])
+m4trace:configure.ac:57: -1- AM_CONDITIONAL([am__EXEEXT], [test -n "$EXEEXT"])
+m4trace:configure.ac:57: -1- m4_pattern_allow([^am__EXEEXT_TRUE$])
+m4trace:configure.ac:57: -1- m4_pattern_allow([^am__EXEEXT_FALSE$])
+m4trace:configure.ac:57: -1- _AM_SUBST_NOTMAKE([am__EXEEXT_TRUE])
+m4trace:configure.ac:57: -1- _AM_SUBST_NOTMAKE([am__EXEEXT_FALSE])
+m4trace:configure.ac:57: -1- _AC_AM_CONFIG_HEADER_HOOK(["$ac_file"])
+m4trace:configure.ac:57: -1- _AM_OUTPUT_DEPENDENCY_COMMANDS
+m4trace:configure.ac:57: -1- _LT_PROG_LTMAIN

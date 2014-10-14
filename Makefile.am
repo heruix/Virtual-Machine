@@ -1,3 +1,3 @@
 ACLOCAL_AMFLAGS = -I m4
 
-SUBDIRS = algorithm-layer application-layer
+SUBDIRS = algorithm-layer application-layer test
