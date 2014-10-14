@@ -67,7 +67,8 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_VirtualMachine_OBJECTS = VirtualMachine-main.$(OBJEXT)
+am_VirtualMachine_OBJECTS = VirtualMachine-main.$(OBJEXT) \
+	VirtualMachine-vcpuThread.$(OBJEXT)
 VirtualMachine_OBJECTS = $(am_VirtualMachine_OBJECTS)
 VirtualMachine_DEPENDENCIES = $(top_srcdir)/algorithm-layer/accelerator/libKvmAccelerator.la \
 	$(top_srcdir)/algorithm-layer/helpers/libHelpers.la \
@@ -210,7 +211,7 @@ top_build_prefix = @top_build_prefix@
 top_builddir = @top_builddir@
 top_srcdir = @top_srcdir@
 ACLOCAL_AMFLAGS = -I m4
-VirtualMachine_SOURCES = main.c
+VirtualMachine_SOURCES = main.c vcpuThread.c
 VirtualMachine_CPPFLAGS = -I$(top_srcdir)/algorithm-layer/include 
 VirtualMachine_LDADD = $(top_srcdir)/algorithm-layer/accelerator/libKvmAccelerator.la \
                        $(top_srcdir)/algorithm-layer/helpers/libHelpers.la \
@@ -308,6 +309,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/VirtualMachine-main.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/VirtualMachine-vcpuThread.Po@am__quote@
 
 .c.o:
 @am__fastdepCC_TRUE@	$(COMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -343,6 +345,20 @@ VirtualMachine-main.obj: main.c
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	source='main.c' object='VirtualMachine-main.obj' libtool=no @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(VirtualMachine_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o VirtualMachine-main.obj `if test -f 'main.c'; then $(CYGPATH_W) 'main.c'; else $(CYGPATH_W) '$(srcdir)/main.c'; fi`
+
+VirtualMachine-vcpuThread.o: vcpuThread.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(VirtualMachine_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT VirtualMachine-vcpuThread.o -MD -MP -MF $(DEPDIR)/VirtualMachine-vcpuThread.Tpo -c -o VirtualMachine-vcpuThread.o `test -f 'vcpuThread.c' || echo '$(srcdir)/'`vcpuThread.c
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/VirtualMachine-vcpuThread.Tpo $(DEPDIR)/VirtualMachine-vcpuThread.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='vcpuThread.c' object='VirtualMachine-vcpuThread.o' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(VirtualMachine_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o VirtualMachine-vcpuThread.o `test -f 'vcpuThread.c' || echo '$(srcdir)/'`vcpuThread.c
+
+VirtualMachine-vcpuThread.obj: vcpuThread.c
+@am__fastdepCC_TRUE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(VirtualMachine_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -MT VirtualMachine-vcpuThread.obj -MD -MP -MF $(DEPDIR)/VirtualMachine-vcpuThread.Tpo -c -o VirtualMachine-vcpuThread.obj `if test -f 'vcpuThread.c'; then $(CYGPATH_W) 'vcpuThread.c'; else $(CYGPATH_W) '$(srcdir)/vcpuThread.c'; fi`
+@am__fastdepCC_TRUE@	$(am__mv) $(DEPDIR)/VirtualMachine-vcpuThread.Tpo $(DEPDIR)/VirtualMachine-vcpuThread.Po
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	source='vcpuThread.c' object='VirtualMachine-vcpuThread.obj' libtool=no @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCC_FALSE@	DEPDIR=$(DEPDIR) $(CCDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCC_FALSE@	$(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(VirtualMachine_CPPFLAGS) $(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS) -c -o VirtualMachine-vcpuThread.obj `if test -f 'vcpuThread.c'; then $(CYGPATH_W) 'vcpuThread.c'; else $(CYGPATH_W) '$(srcdir)/vcpuThread.c'; fi`
 
 mostlyclean-libtool:
 	-rm -f *.lo

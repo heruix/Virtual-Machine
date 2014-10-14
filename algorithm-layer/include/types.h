@@ -1,7 +1,9 @@
 #ifndef TYPES_H
 #define TYPES_H
 
+#include "accelerator.h"
 #include <pthread.h>
+#include <linux/kvm.h>
 
 typedef struct {
     int id;
